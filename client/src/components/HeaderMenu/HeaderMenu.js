@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Menu, Icon, Dropdown } from "semantic-ui-react";
+import { Menu, Image, Dropdown } from "semantic-ui-react";
 import { Link, withRouter } from "react-router-dom";
+import DropDownUser from "./DropDownUser/DropDownUser";
 
 class HeaderMenu extends Component {
   render() {
@@ -23,7 +24,12 @@ class HeaderMenu extends Component {
 
     return (
       <Menu size="small" secondary>
-        <Menu.Menu position="right">{menuItems}</Menu.Menu>
+        <Menu.Menu position="right">
+          {menuItems}
+          <Menu.Item>
+            <DropDownUser />
+          </Menu.Item>
+        </Menu.Menu>
       </Menu>
     );
   }

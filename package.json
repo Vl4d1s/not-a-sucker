@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "b": "npm run bootstrap",
+    "client": "npm start --prefix  ./client",
     "bootstrap": "lerna bootstrap",
+    "server": "nodemon server --prefix ./server",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "lerna run start --parallel",
+    "dev": "concurrently \"npm run server \" \"npm run client\"",
     "postinstall": "npm run bootstrap"
   },
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
   },
   "dependencies": {
     "react-router-dom": "^5.2.0"

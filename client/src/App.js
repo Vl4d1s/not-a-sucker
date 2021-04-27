@@ -8,10 +8,20 @@ class App extends Component {
   render() {
     return (
       <main>
-        <Router>
-          <HeaderMenu items={[["", ""]]} />
-          <Routs />
-        </Router>
+        <div
+          style={{
+            display: "flex",
+            minHeight: "100vh",
+            flexDirection: "column",
+          }}
+        >
+          <Router>
+            <HeaderMenu items={[["", ""]]} />
+            <div style={{ flex: "1" }}>
+              <Routs />
+            </div>
+          </Router>
+        </div>
       </main>
     );
   }

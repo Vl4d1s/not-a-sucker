@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <main>
         <Router>
-          <HeaderMenu items={[["Login", "/"]]} />
+          <HeaderMenu items={[["", ""]]} />
           <Routs />
         </Router>
       </main>

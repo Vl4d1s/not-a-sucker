@@ -6,10 +6,17 @@ import Input from "./Input/Input";
 
 const Search = () => {
   return (
-    <Container>
+    <div
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+        marginTop: "50px",
+      }}
+    >
       <Image src={logo} centered />
       <Input />
-    </Container>
+    </div>
   );
 };
 

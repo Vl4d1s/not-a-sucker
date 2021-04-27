@@ -14,11 +14,21 @@ const SearchBar = () => {
         icon="search"
         placeholder="Search..."
       />
-      <Button size="big" animated="fade">
+      <Button
+        color="black"
+        size="big"
+        animated="fade"
+        style={{ marginLeft: "10px" }}
+      >
         <Button.Content visible>Search now</Button.Content>
         <Button.Content hidden>Save your money</Button.Content>
       </Button>
-      <Button size="big" animated="fade">
+      <Button
+        color="black"
+        size="big"
+        animated="fade"
+        style={{ marginLeft: "10px" }}
+      >
         <Button.Content visible>I'm feeling lucky</Button.Content>
         <Button.Content hidden>Random product!</Button.Content>
       </Button>

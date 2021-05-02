@@ -28,7 +28,7 @@ function App() {
             setFlag(true);
         }
     }
-    //change the zoom to zoom in
+    //change the zoom to zoom in.
     const handlePageZoomIn = () => {
         if (currentZoom < 3) {
             setCurrentZoom(currentZoom + 0.1);
@@ -94,7 +94,6 @@ function App() {
                             <Routs />
                         </div>
                     </Router>
-
                 </div>
             </div>
             {flag && <div className="zoom-buttons">

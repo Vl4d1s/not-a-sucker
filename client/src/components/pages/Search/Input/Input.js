@@ -10,6 +10,7 @@ const SearchBar = () => {
   const handleClick = () => inputRef.current.focus();
   const handleSearch = async () => {
     const data = await searchForProduct(searchItem);
+    console.log("data is", data);
     setTempSearchData(data);
   };
 

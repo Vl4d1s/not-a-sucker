@@ -3,7 +3,7 @@ import { Card, Icon, Image } from "semantic-ui-react";
 
 const SearchItem = ({ imgUrl, title, link, price }) => (
   <Card>
-    <Image src={imgUrl ? imgUrl : "url"} wrapped ui={false} />
+    <Image src={imgUrl ? imgUrl : "url"} wrapped ui={false} size="medium" />
     <Card.Content>
       <Card.Header>{title ? title : " title"}</Card.Header>
       <Card.Meta>{price ? price : "price"}</Card.Meta>

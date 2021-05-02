@@ -6,7 +6,6 @@
   "scripts": {
     "b": "npm run bootstrap",
     "client": "npm start --prefix  ./client",
-    "bootstrap": "lerna bootstrap",
     "server": "nodemon server --prefix ./server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"npm run server \" \"npm run client\"",

@@ -36,6 +36,7 @@ const options = [
 
 const DropDownUser = () => (
   <Dropdown inline trigger={trigger} options={options} />
+
 );
 
 export default DropDownUser;

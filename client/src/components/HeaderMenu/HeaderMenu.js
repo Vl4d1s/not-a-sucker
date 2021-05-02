@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Menu, Image, Dropdown } from "semantic-ui-react";
 import { Link, withRouter } from "react-router-dom";
 import DropDownUser from "./DropDownUser/DropDownUser";
-import Negishut from "./DropDownUser/Negishut";
+
 
 class HeaderMenu extends Component {
   render() {
@@ -29,7 +29,6 @@ class HeaderMenu extends Component {
           {menuItems}
           <Menu.Item>
             {/* <DropDownUser /> */}
-            <Negishut/>
           </Menu.Item>
         </Menu.Menu>
       </Menu>

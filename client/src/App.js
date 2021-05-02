@@ -1,34 +1,110 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import HeaderMenu from "./components/HeaderMenu/HeaderMenu";
 import Routs from "./components/routs/Routs";
+import { Dropdown, Image } from "semantic-ui-react";
+import negishut from "./assets/images/negishut.png";
 import "./App.css";
-import Accessibility from './components/accessibility/Accessibility';
 
-class App extends Component {
-  render() {
-    return (
-      <div id="my-App" className="my-text w-40 h-40" >
-        <main>
-        {/* <Accessibility/> */}
-          <div 
-            style={{
-              display: "flex",
-              minHeight: "100vh",
-              flexDirection: "column",
-            }}
-          >
-            <Router>
-              <HeaderMenu items={[["", ""]]} />
-              <div style={{ flex: "1" }}>
-                <Routs />
-              </div>
-            </Router>
-          </div>
-        </main>
-      </div>
+
+
+
+
+function App() {
+    
+
+    const [currentZoom, setCurrentZoom] = useState(1); // default zoom value
+    const [flag, setFlag] = useState(false); //flag for zoom in zoom out
+    const [brightness, setBrightness] = useState(125); // check if background bigger then 125  and set black or white color
+
+
+    // button flag if add zoom option or not
+    const handleZoomButtons = () => {
+
+        if (flag == true) {
+
+            setFlag(false);
+        } else {
+            setFlag(true);
+        }
+    }
+    //change the zoom to zoom in
+    const handlePageZoomIn = () => {
+        if (currentZoom < 3) {
+            setCurrentZoom(currentZoom + 0.1);
+            document.getElementById("my-App").style.transform = `scale(${currentZoom})`;
+        }
+    }
+
+    //change the zoom to zoom out
+    const handlePageZoomOut = () => {
+        if (currentZoom > 1) {
+            setCurrentZoom(currentZoom - 0.1);
+            document.getElementById("my-App").style.transform = `scale(${currentZoom})`;
+        }
+    }
+    const trigger = (
+        <span>
+            <Image
+                style={{ border: "2px solid with" }}
+                bordered
+                size="mini"
+                spaced
+                circular
+                src={negishut}
+            />
+        </span>
     );
-  }
+
+    const options = [
+        {
+            key: "user",
+            text: (
+                <span>
+                    <strong>select</strong>
+                </span>
+            ),
+            disabled: true,
+        },
+        { key: "zoomi", text: "הגדל את המסך",onClick:handleZoomButtons},
+    ];
+
+    useEffect(() => {
+
+        //init default zoom - my-App the content div
+        document.getElementById("my-App").style.transform = `scale(${currentZoom})`;
+
+    }, [])
+
+    return (
+        <div id="container">
+            <div className="accessibility-option">
+            <Dropdown inline trigger={trigger} options={options} />
+            </div>
+            <div className="container" style={{
+                display: "flex",
+                minHeight: "100vh",
+                flexDirection: "column",
+            }}>
+
+                <div id="my-App" className="my-text w-40 h-40">
+                    <Router>
+                        <HeaderMenu items={[["", ""]]} />
+                        <div style={{ flex: "1" }}>
+                            <Routs />
+                        </div>
+                    </Router>
+
+                </div>
+            </div>
+            {flag && <div className="zoom-buttons">
+                <button className="btn btn-dark button-padding" onClick={handlePageZoomIn}>+</button>
+                <button className="btn btn-dark button-padding" onClick={handlePageZoomOut}>-</button>
+            </div>}
+        </div>
+
+    );
 }
+
 
 export default App;

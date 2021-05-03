@@ -45,7 +45,7 @@ const SearchBar = () => {
         <Button.Content visible>I'm feeling lucky</Button.Content>
         <Button.Content hidden>Random product!</Button.Content>
       </Button>
-      <div>
+      <div style={{marginTop:500}}>
         <SearchResults searchResults={tempSearchData} />
       </div>
     </Container>

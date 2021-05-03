@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Menu, Image, Dropdown } from "semantic-ui-react";
 import { Link, withRouter } from "react-router-dom";
 import DropDownUser from "./DropDownUser/DropDownUser";
+import AccessbilityMenu from "../HeaderMenu/AccessabilityMenu/AccessabilityMenu";
 
 class HeaderMenu extends Component {
   render() {
@@ -27,7 +28,7 @@ class HeaderMenu extends Component {
         <Menu.Menu position="right">
           {menuItems}
           <Menu.Item>
-            <DropDownUser />
+            {/* <DropDownUser /> */}
           </Menu.Item>
         </Menu.Menu>
       </Menu>

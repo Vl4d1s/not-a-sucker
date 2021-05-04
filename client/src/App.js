@@ -4,10 +4,15 @@ import HeaderMenu from "./components/HeaderMenu/HeaderMenu";
 import Routs from "./components/routs/Routs";
 import "./App.css";
 import AccessbilityMenu from "./components/HeaderMenu/AccessabilityMenu/AccessabilityMenu";
+// Redux
+import { Provider } from 'react-redux';
+import store from './store';
+
 
 class App extends Component {
   render() {
     return (
+      <Provider store={store}>
       <main>
         <div
           style={{
@@ -27,7 +32,7 @@ class App extends Component {
           </Router>
         </div>
       </main>
-
+      </Provider>
     );
   }
 }

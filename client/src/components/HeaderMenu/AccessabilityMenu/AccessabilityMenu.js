@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 //import { BrowserRouter as Router } from "react-router-dom";
 //import HeaderMenu from "./components/HeaderMenu/HeaderMenu";
 //import Routs from "./components/routs/Routs";
-import { Dropdown, Image } from "semantic-ui-react";
+import { Dropdown, Image, Sticky } from "semantic-ui-react";
 import negishut from "../../../assets/images/negishut.png";
 import "../../../App.css";
 
@@ -43,7 +43,8 @@ function AccessbilityMenu() {
             <Image
                 style={{ border: "2px solid with" }}
                 bordered
-                size="mini"
+                size="tiny"
+                position={Sticky}
                 spaced
                 circular
                 src={negishut}

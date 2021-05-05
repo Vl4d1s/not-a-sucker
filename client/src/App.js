@@ -23,10 +23,12 @@ class App extends Component {
         >
           <AccessbilityMenu />
           <Router>
-          <div id="my-App" className="my-text w-40 h-40">
+          <div id="my-App" className="cursor">
+          
             <HeaderMenu items={[["", ""]]} />
             <div style={{ flex: "1" }}>
               <Routs />
+             
             </div>
             </div>
           </Router>

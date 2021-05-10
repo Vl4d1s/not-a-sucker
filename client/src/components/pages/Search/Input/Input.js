@@ -1,5 +1,5 @@
-import React, { Component, createRef, useState } from "react";
-import { Input, Button, Container } from "semantic-ui-react";
+import React, { createRef, useState } from "react";
+import { Input, Button, Container, Icon } from "semantic-ui-react";
 import { searchForProduct } from "../../../../actions/searchActions";
 import SearchResults from "../SearchResults/SearchResults";
 import { Link } from "react-router-dom";
@@ -21,7 +21,7 @@ const SearchBar = () => {
         style={{ marginBottom: "30px", marginTop: "20px" }}
         size="big"
         fluid
-        icon="search"
+        icon={<Icon name="search" link onClick={handleSearch} />}
         placeholder="Search..."
         onChange={(e) => {
           setSearchItem(e.target.value);

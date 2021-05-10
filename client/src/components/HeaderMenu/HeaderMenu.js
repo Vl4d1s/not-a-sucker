@@ -28,7 +28,7 @@ class HeaderMenu extends Component {
         <Menu.Menu position="right">
           {menuItems}
           <Menu.Item>
-            {/* <DropDownUser /> */}
+            <DropDownUser />
           </Menu.Item>
         </Menu.Menu>
       </Menu>

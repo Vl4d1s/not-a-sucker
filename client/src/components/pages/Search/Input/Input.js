@@ -2,6 +2,7 @@ import React, { Component, createRef, useState } from "react";
 import { Input, Button, Container } from "semantic-ui-react";
 import { searchForProduct } from "../../../../actions/searchActions";
 import SearchResults from "../SearchResults/SearchResults";
+import { Link } from "react-router-dom";
 
 const SearchBar = () => {
   const [searchItem, setSearchItem] = useState("");
@@ -27,6 +28,8 @@ const SearchBar = () => {
         }}
       />
       <Button
+        as={Link}
+        to="/results"
         color="black"
         size="big"
         animated="fade"
@@ -45,7 +48,7 @@ const SearchBar = () => {
         <Button.Content visible>I'm feeling lucky</Button.Content>
         <Button.Content hidden>Random product!</Button.Content>
       </Button>
-      <div style={{marginTop:500}}>
+      <div style={{ marginTop: 500 }}>
         <SearchResults searchResults={tempSearchData} />
       </div>
     </Container>

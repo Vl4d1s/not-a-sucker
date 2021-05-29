@@ -2,7 +2,9 @@ const express = require("express");
 const port = process.env.PORT || 8000;
 const app = express();
 const search = require("./routes/API/searchAPI");
+const connectDB = require("./config/db");
 
+connectDB();
 app.use(express.json({ extended: false }));
 app.use("/api/search", search);
 

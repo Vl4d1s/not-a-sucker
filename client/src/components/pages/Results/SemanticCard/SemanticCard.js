@@ -1,11 +1,11 @@
 import React from "react";
 import { Image, Grid, Card } from "semantic-ui-react";
-import CircleLoader from "../../../CircleLoader";
 
 const SemanticCard = ({ searchData }) => {
+  console.log(searchData);
   return (
     <Grid.Column>
-      {searchData.dataArray.map((searchItem, index) => (
+      {searchData.map((searchItem, index) => (
         <Card key={index}>
           <Image src={searchItem.image} wrapped ui={false} />
           <Card.Content>
@@ -16,6 +16,7 @@ const SemanticCard = ({ searchData }) => {
       ))}
     </Grid.Column>
   );
+  // return <p>ok</p>;
 };
 
 export default SemanticCard;

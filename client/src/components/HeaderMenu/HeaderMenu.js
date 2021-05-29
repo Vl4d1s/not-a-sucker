@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Menu, Image, Dropdown } from "semantic-ui-react";
+import { Menu } from "semantic-ui-react";
 import { Link, withRouter } from "react-router-dom";
 import DropDownUser from "./DropDownUser/DropDownUser";
-import AccessbilityMenu from "../HeaderMenu/AccessabilityMenu/AccessabilityMenu";
 
 class HeaderMenu extends Component {
   render() {

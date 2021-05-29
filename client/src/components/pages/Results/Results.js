@@ -1,50 +1,49 @@
-import React, { useState } from "react";
-
-import { Image, Input, Icon, Grid, Card, Container } from "semantic-ui-react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Image, Input, Icon, Grid, Container } from "semantic-ui-react";
 import secoundLogo from "../../../assets/images/secoundLogo.png";
 import { Link } from "react-router-dom";
 import { searchForProduct } from "../../../actions/searchActions";
 import SemanticCard from "./SemanticCard/SemanticCard";
-import CircleLoader from "../../CircleLoader";
+// import lottieOptions from "../../../lotties/lottieOptions";
+// import Lottie from "react-lottie";
 
-const Results = () => {
+const Results = (props) => {
   const [searchItem, setSearchItem] = useState("");
   const [tempSearchData, setTempSearchData] = useState([]);
-  const [isSearchClicked, setIsSearchClicked] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const { aliExpressData, ebayData, amazonData } = useSelector(
+    (state) => state.searchReducer
+  );
+
+  useEffect(() => {
+    if (aliExpressData && ebayData && amazonData) {
+      setTempSearchData({ aliExpressData, ebayData, amazonData });
+      setIsLoading(false);
+    }
+  }, [aliExpressData, ebayData, amazonData]);
+
+  const dispatch = useDispatch();
 
   const handleSearchClick = async () => {
-    const data = await searchForProduct(searchItem);
-    console.log("data is", data);
-    setTempSearchData(data);
-    setIsSearchClicked(true);
+    if (!isLoading) {
+      setIsLoading(true);
+    }
+    await dispatch(searchForProduct(searchItem));
   };
 
   const renderContent = () => {
-    console.log(`${isSearchClicked}-${tempSearchData}`);
-    if (!isSearchClicked) return null;
-    if (isSearchClicked && tempSearchData.length === 0) return <CircleLoader />;
-    if (isSearchClicked && tempSearchData) {
+    if (isLoading) {
+      return <p>Loading</p>;
+    } else {
       return (
         <Container>
-          {tempSearchData && isSearchClicked ? (
-            <Grid columns="equal">
-              <SemanticCard
-                searchData={tempSearchData ? tempSearchData[0] : null}
-              />
-              <Grid.Column>
-                <SemanticCard
-                  searchData={tempSearchData ? tempSearchData[1] : null}
-                />
-              </Grid.Column>
-              <Grid.Column>
-                <SemanticCard
-                  searchData={tempSearchData ? tempSearchData[1] : null}
-                />
-              </Grid.Column>
-            </Grid>
-          ) : (
-            <CircleLoader />
-          )}
+          <Grid columns="equal">
+            <Grid.Column>
+              <SemanticCard searchData={tempSearchData.aliExpressData} />
+            </Grid.Column>
+          </Grid>
         </Container>
       );
     }

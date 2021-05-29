@@ -9,6 +9,7 @@ const SearchBar = () => {
   const [tempSearchData, setTempSearchData] = useState();
   const inputRef = createRef();
   const handleClick = () => inputRef.current.focus();
+
   const handleSearch = async () => {
     const data = await searchForProduct(searchItem);
     console.log("data is", data);
@@ -29,7 +30,7 @@ const SearchBar = () => {
       />
       <Button
         as={Link}
-        to="/results"
+        to={searchItem.trim().length > 0 ? "/results" : "/"}
         color="black"
         size="big"
         animated="fade"
@@ -48,9 +49,6 @@ const SearchBar = () => {
         <Button.Content visible>I'm feeling lucky</Button.Content>
         <Button.Content hidden>Random product!</Button.Content>
       </Button>
-      <div style={{ marginTop: 500 }}>
-        <SearchResults searchResults={tempSearchData} />
-      </div>
     </Container>
   );
 };

@@ -1,0 +1,3 @@
+export const START_LOADING = "START_LOADING";
+export const FINISH_LOADING = "FINISH_LOADING";
+export const LOAD_SEARCH_DATA = "LOAD_SEARCH_DATA";

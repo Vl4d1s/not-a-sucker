@@ -1,0 +1,13 @@
+.upper-container {
+  margin-top: -50px;
+  margin-left: 150px;
+  display: flex;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}

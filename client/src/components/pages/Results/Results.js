@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Image, Input, Icon, Grid, Container } from "semantic-ui-react";
-import secoundLogo from "../../../assets/images/secoundLogo.png";
 import { Link } from "react-router-dom";
 import { searchForProduct } from "../../../actions/searchActions";
 import SemanticCard from "./SemanticCard/SemanticCard";
-// import lottieOptions from "../../../lotties/lottieOptions";
-// import Lottie from "react-lottie";
+import Loader from "../../../UI/Loader/Loader";
+import secoundLogo from "../../../assets/images/secoundLogo.png";
+import classes from "./Results.module.css";
 
 const Results = (props) => {
   const [searchItem, setSearchItem] = useState("");
@@ -35,7 +35,11 @@ const Results = (props) => {
 
   const renderContent = () => {
     if (isLoading) {
-      return <p>Loading</p>;
+      return (
+        <div className={classes.centered}>
+          <Loader height="500" width="500" />
+        </div>
+      );
     } else {
       return (
         <Container>
@@ -51,16 +55,8 @@ const Results = (props) => {
 
   return (
     <div>
-      <div style={{ marginTop: "-50px", marginLeft: "150px" }}>
-        <Image
-          as={Link}
-          to="/"
-          src={secoundLogo}
-          inline
-          style={{ marginRight: "40px" }}
-          floated="left"
-          size="tiny"
-        />
+      <Container className={classes["upper-container"]}>
+        <Image as={Link} to="/" src={secoundLogo} floated="left" size="tiny" />
         <Input
           size="big"
           onChange={(e) => {
@@ -69,9 +65,8 @@ const Results = (props) => {
           icon={<Icon name="search" link onClick={handleSearchClick} />}
           placeholder="Search..."
           fluid
-          style={{ marginRight: "700px" }}
         />
-      </div>
+      </Container>
       <br />
       {renderContent()}
     </div>

@@ -1,19 +1,17 @@
-import React, { createRef, useState } from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Input, Button, Container, Icon } from "semantic-ui-react";
 import { searchForProduct } from "../../../../actions/searchActions";
-import SearchResults from "../SearchResults/SearchResults";
+// import SearchResults from "../SearchResults/SearchResults";
 import { Link } from "react-router-dom";
 
 const SearchBar = () => {
   const [searchItem, setSearchItem] = useState("");
-  const [tempSearchData, setTempSearchData] = useState();
-  const inputRef = createRef();
-  const handleClick = () => inputRef.current.focus();
+
+  const dispatch = useDispatch();
 
   const handleSearch = async () => {
-    const data = await searchForProduct(searchItem);
-    console.log("data is", data);
-    setTempSearchData(data);
+    dispatch(searchForProduct(searchItem));
   };
 
   return (

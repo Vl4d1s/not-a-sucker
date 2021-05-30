@@ -24,16 +24,16 @@ const Loader = (props) => {
   };
 
   return (
-    <div>
-      <p className={classes.typewriter}>
-        <Typewriter options={typewriterOptions} />
-      </p>
+    <React.Fragment>
       <Lottie
         options={defaultOptions}
         height={+props.height}
         width={+props.width}
       />
-    </div>
+      <p className={classes.typewriter}>
+        <Typewriter options={typewriterOptions} />
+      </p>
+    </React.Fragment>
   );
 };
 

@@ -3,7 +3,7 @@ import { Image, Grid, Card } from "semantic-ui-react";
 
 const SemanticCard = ({ searchData }) => {
   const renderedCards = searchData.map((searchItem, index) => (
-    <Card key={index} href={searchItem.link}>
+    <Card fluid key={index} href={searchItem.link}>
       <Image src={searchItem.image} wrapped ui={false} />
       <Card.Content>
         <Card.Header>{searchItem.title}</Card.Header>

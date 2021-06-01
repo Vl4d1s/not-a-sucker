@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Image, Input, Icon, Grid, Container } from "semantic-ui-react";
 import { Link } from "react-router-dom";
@@ -20,17 +20,14 @@ const Results = () => {
     isLoading: reduxIsLoading,
   } = useSelector((state) => state.searchReducer);
 
-  const [searchItem, setSearchItem] = useState("");
+  const [searchItem, setSearchItem] = useState(searchKey);
   const [tempSearchData, setTempSearchData] = useState([]);
-  const [isLoading, setIsLoading] = useState(reduxIsLoading);
-
-  console.log(isLoading);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (aliExpressData && ebayData && amazonData) {
       setTempSearchData({ aliExpressData, ebayData, amazonData });
       setIsLoading(false);
-      setSearchItem(searchKey);
     }
   }, [aliExpressData, ebayData, amazonData]);
 
@@ -49,27 +46,25 @@ const Results = () => {
   };
 
   const renderContent = () => {
-    if (isLoading && searchKey) {
+    {
+      console.log(`isLoading: ${isLoading}`);
+    }
+    {
+      console.log(`searchKey: ${searchKey}`);
+    }
+    if (isLoading) {
       return (
         <div className={classes.centered}>
           <Loader height="500" width="500" />
         </div>
       );
-    } else if (!isLoading && tempSearchData.length === 0) {
-      return;
     } else {
       return (
         <Container>
-          <Grid columns="equal">
-            <Grid.Column>
-              <SemanticCard searchData={tempSearchData.aliExpressData} />
-            </Grid.Column>
-            <Grid.Column>
-              <SemanticCard searchData={tempSearchData.ebayData} />
-            </Grid.Column>
-            <Grid.Column>
-              <SemanticCard searchData={tempSearchData.amazonData} />
-            </Grid.Column>
+          <Grid columns={3}>
+            <SemanticCard searchData={tempSearchData.aliExpressData} />
+            <SemanticCard searchData={tempSearchData.ebayData} />
+            <SemanticCard searchData={tempSearchData.amazonData} />
           </Grid>
         </Container>
       );

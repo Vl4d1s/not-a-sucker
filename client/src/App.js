@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-      <main>
+      <div id="main"  className="main">
         <div
           style={{
             display: "flex",
@@ -33,7 +33,7 @@ class App extends Component {
             </div>
           </Router>
         </div>
-      </main>
+      </div>
       </Provider>
     );
   }

@@ -5,6 +5,7 @@ import negishut from "../../../assets/images/negishut.png";
 import "../../../App.css";
 
 function AccessbilityMenu() {
+  const [Contrastflag, setContrastflag] = useState(false); //flag for contrast
   const [cursorflag, setCursorFlag] = useState(false); //flag for Cursor
   const [currentZoom, setCurrentZoom] = useState(1); // default zoom value
   const [flag, setFlag] = useState(false); //flag for zoom in zoom out
@@ -28,6 +29,18 @@ function AccessbilityMenu() {
       setCursorFlag(false);
     }
   };
+
+
+  const Contrast = () => {
+    if (Contrastflag === false) {
+      document.getElementById("main").className = `main2`;
+      setContrastflag(true);
+    } else {
+      document.getElementById("main").className = `main`;
+      setContrastflag(false);
+    }
+  };
+
 
   //change the zoom to zoom in.
   const handlePageZoomIn = () => {
@@ -75,6 +88,7 @@ function AccessbilityMenu() {
     },
     { key: "zoomi", text: "הגדל את המסך", onClick: handleZoomButtons },
     { key: "zoomi", text: "הגדל סמן עכבר", onClick: changeCursor },
+    { key: "zoomi", text: "שנה ניגודיות", onClick: Contrast },
   ];
 
   useEffect(() => {

@@ -1,8 +1,18 @@
-main {
+.main {
   background-image: linear-gradient(
       to right bottom,
       rgba(255, 192, 192, 0.9),
       rgba(152, 176, 255, 0.9)
+    ),
+    url(./assets/images/backgroundColor.jpg);
+  background-size: cover;
+  background-position: top;
+}
+.main2{
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(31, 23, 23, 0.9),
+      rgba(38, 60, 133, 0.9)
     ),
     url(./assets/images/backgroundColor.jpg);
   background-size: cover;

@@ -82,19 +82,19 @@ async function scrapeAliexpress(searchItem) {
   await page.waitForTimeout(2000);
   const aliexpressScrapeData = await page.evaluate(() => {
     const titles = Array.from(
-      document.querySelectorAll('a[class="item-title"]')
+      document.querySelectorAll('a[class="awV9E"]')
     ).map((title) => title.title);
     const images = Array.from(
-      document.querySelectorAll('img[class="item-img"]')
+      document.querySelectorAll('img[class="A3Q1M"]')
     ).map((img) => img.src);
 
     const prices = Array.from(
-      document.querySelectorAll('span[class="price-current"]')
+      document.querySelectorAll('div[class="_12A8D"]')
     ).map((price) => price.innerText);
 
-    const links = Array.from(
-      document.querySelectorAll('a[class="item-title"]')
-    ).map((link) => link.href);
+    const links = Array.from(document.querySelectorAll('a[class="awV9E"]')).map(
+      (link) => link.href
+    );
 
     let dataArray = [];
     for (let i = 0; i < 5; i++) {
@@ -115,7 +115,7 @@ async function scrapeAliexpress(searchItem) {
 
 async function scrapeEbay(searchItem) {
   const page = await configureBrowser(
-    `https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2380057.m570.l1313&_nkw=${searchItem}&_sacat=0`
+    `https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=${searchItem}&_sacat=0`
   );
 
   await page.waitForTimeout(2000);

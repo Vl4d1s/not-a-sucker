@@ -206,6 +206,16 @@ router.get("/:item", async (req, res) => {
   }
 });
 
+router.delete("/deletecache", async (req, res) => {
+  try {
+    await ScrapeData.deleteMany({
+      date: { $lte: new Date(new Date(Date.now()).getTime() - 1800000) },
+    });
+    res.json({ msg: "done" });
+  } catch (error) {
+    console.log("error", error);
+  }
+});
 // data:{
 //   amazonData:{
 //     [ { title:'',img:'',price:'',link:''}]

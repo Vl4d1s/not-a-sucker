@@ -17,7 +17,7 @@ const Results = () => {
     ebayData,
     amazonData,
     searchKey,
-    isLoading: reduxIsLoading,
+    // isLoading: reduxIsLoading,
   } = useSelector((state) => state.searchReducer);
 
   const [searchItem, setSearchItem] = useState(searchKey);
@@ -46,15 +46,9 @@ const Results = () => {
   };
 
   const renderContent = () => {
-    {
-      console.log(`isLoading: ${isLoading}`);
-    }
-    {
-      console.log(`searchKey: ${searchKey}`);
-    }
     if (isLoading) {
       return (
-        <div className={classes.centered}>
+        <div>
           <Loader height="500" width="500" />
         </div>
       );
@@ -62,9 +56,18 @@ const Results = () => {
       return (
         <Container>
           <Grid columns={3}>
-            <SemanticCard searchData={tempSearchData.aliExpressData} />
-            <SemanticCard searchData={tempSearchData.ebayData} />
-            <SemanticCard searchData={tempSearchData.amazonData} />
+            <SemanticCard
+              searchData={tempSearchData.aliExpressData}
+              website={"AliExpress"}
+            />
+            <SemanticCard
+              searchData={tempSearchData.ebayData}
+              website={"Ebay"}
+            />
+            <SemanticCard
+              searchData={tempSearchData.amazonData}
+              website={"Amazon"}
+            />
           </Grid>
         </Container>
       );
@@ -72,7 +75,7 @@ const Results = () => {
   };
 
   return (
-    <div>
+    <Fragment>
       <Container className={classes["upper-container"]}>
         <Image
           as={Link}
@@ -93,7 +96,7 @@ const Results = () => {
         />
       </Container>
       {renderContent()}
-    </div>
+    </Fragment>
   );
 };
 

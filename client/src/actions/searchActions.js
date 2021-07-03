@@ -1,5 +1,9 @@
 import axios from "axios";
-import { LOAD_SEARCH_DATA, CLEAR_SEARCH_DATA } from "./types";
+import {
+  LOAD_SEARCH_DATA,
+  CLEAR_SEARCH_DATA,
+  ERROR_SEARCH_DATA,
+} from "./types";
 
 export const searchForProduct = (searchItem) => async (dispatch) => {
   try {
@@ -9,6 +13,7 @@ export const searchForProduct = (searchItem) => async (dispatch) => {
     dispatch({
       type: LOAD_SEARCH_DATA,
       payload: {
+        isError: false,
         isLoading: true,
         aliExpressData: res.data.aliExpress,
         ebayData: res.data.ebay,
@@ -19,6 +24,12 @@ export const searchForProduct = (searchItem) => async (dispatch) => {
     console.log("res:", res);
     console.log("res:", searchItem);
   } catch (error) {
+    dispatch({
+      type: ERROR_SEARCH_DATA,
+      payload: {
+        isError: true,
+      },
+    });
     console.log("error", error);
   }
 };

@@ -12,24 +12,19 @@ import secoundLogo from "../../../assets/images/secoundLogo.png";
 import classes from "./Results.module.css";
 
 const Results = () => {
-  const {
-    aliExpressData,
-    ebayData,
-    amazonData,
-    searchKey,
-    // isLoading: reduxIsLoading,
-  } = useSelector((state) => state.searchReducer);
+  const { aliExpressData, ebayData, amazonData, searchKey, isError } =
+    useSelector((state) => state.searchReducer);
 
   const [searchItem, setSearchItem] = useState(searchKey);
   const [tempSearchData, setTempSearchData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (aliExpressData && ebayData && amazonData) {
+    if (aliExpressData && ebayData && amazonData && !isError) {
       setTempSearchData({ aliExpressData, ebayData, amazonData });
       setIsLoading(false);
     }
-  }, [aliExpressData, ebayData, amazonData]);
+  }, [aliExpressData, ebayData, amazonData, isError]);
 
   const dispatch = useDispatch();
 
@@ -46,7 +41,12 @@ const Results = () => {
   };
 
   const renderContent = () => {
-    if (isLoading) {
+    {
+      console.log(isError);
+    }
+    if (isError) {
+      return <h2>Something went wrong...</h2>;
+    } else if (isLoading) {
       return (
         <div>
           <Loader height="500" width="500" />

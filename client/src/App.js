@@ -25,7 +25,7 @@ class App extends Component {
               <div
                 id="my-App"
                 className="cursor"
-                style={{ overflowY: "scroll" }}
+                style={{ overflowY: "scroll", height: "100vh" }}
               >
                 <HeaderMenu items={[["", ""]]} />
                 <div style={{ flex: "1" }}>

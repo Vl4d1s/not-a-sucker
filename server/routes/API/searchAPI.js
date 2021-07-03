@@ -203,6 +203,7 @@ router.get("/:item", async (req, res) => {
     }
   } catch (error) {
     console.log("error", error);
+    res.status(500).send(error.message);
   }
 });
 
@@ -216,15 +217,4 @@ router.delete("/deletecache", async (req, res) => {
     console.log("error", error);
   }
 });
-// data:{
-//   amazonData:{
-//     [ { title:'',img:'',price:'',link:''}]
-//   },
-//   aliExpressData:{
-
-//   },
-//   ebayData:{
-
-//   }
-// }
 module.exports = router;
